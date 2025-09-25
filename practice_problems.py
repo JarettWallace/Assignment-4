@@ -13,9 +13,9 @@ Output: False
 """
 
 def has_duplicates(product_ids):
-    # Your implementation here
-    pass
-
+    return len(product_ids) != len(set(product_ids))
+    
+#For the first problem I decided to go with a set. A set was the best option to me as it will automatically check if the set has a diffrent length compared to the orginal list, pointing out any duplicates
 
 """
 Problem 2: Order Manager
@@ -29,17 +29,21 @@ task_queue.add_task("Email follow-up")
 task_queue.add_task("Code review")
 task_queue.remove_oldest_task() → "Email follow-up"
 """
+from collections import deque
 
 class TaskQueue:
     def __init__(self):
-        # Your initialization here
-        pass
+        self.tasks = deque()
 
     def add_task(self, task):
-        pass
+        self.tasks.append(task)
 
     def remove_oldest_task(self):
-        pass
+        if self.tasks:
+            return self.tasks.popleft()
+        else:
+            return None 
+#problem 2 needed a list that would keep them in the order they were added. Using a queue was a good option as it makes appending and popping from both sides of the list very quick and easy.
 
 
 """
@@ -57,10 +61,11 @@ tracker.get_unique_count() → 2
 
 class UniqueTracker:
     def __init__(self):
-        pass
+        self.unique_values = set()
 
     def add(self, value):
-        pass
+        self.unique_values.add(value)
 
     def get_unique_count(self):
-        pass
+        return len(self.unique_values)
+#Problem 3 needed to be able to keep track of and return a list of unique values, becuase of this I used a set. A set was my choice as it automatically handled the uniqueness of the values in the set. 
